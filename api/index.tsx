@@ -4,7 +4,6 @@ import { serveStatic } from "frog/serve-static";
 // import { neynar } from 'frog/hubs'
 import { handle } from "frog/vercel";
 import { getUserStatus, registerUser } from "./lib/faucet.js";
-import { Container, ContainerItem } from "./components/index.js";
 
 // Uncomment to use Edge Runtime.
 // export const config = {
@@ -24,11 +23,7 @@ app.frame("/", (c) => {
 
   return c.res({
     action: "/checkClaim",
-    image: (
-      <Container>
-        <ContainerItem data="Join the excitement at ETH-Prague with our exclusive token distribution faucet" />
-      </Container>
-    ),
+    image: <div>hola</div>,
     intents: [
       <Button>Next</Button>,
       <Button.Link href="https://github.com/FarcasterFaucet/faucet-land">
@@ -49,17 +44,7 @@ app.frame("/checkClaim", async (c) => {
 
   return c.res({
     action: canClaim ? "/claimed" : "/registered",
-    image: (
-      <Container>
-        {canClaim ? (
-          <Claim />
-        ) : registeredNextPeriod ? (
-          <ClaimTime />
-        ) : (
-          <ContainerItem data="Register for next period and claim MTK tokens" />
-        )}
-      </Container>
-    ),
+    image: <div>hola</div>,
     intents: [
       (canClaim || !registeredNextPeriod) && (
         <Button.Transaction target="/claimAndOrRegister">
